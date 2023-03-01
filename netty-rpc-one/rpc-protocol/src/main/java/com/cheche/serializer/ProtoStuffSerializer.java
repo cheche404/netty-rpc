@@ -27,15 +27,9 @@ public class ProtoStuffSerializer implements ISerializer {
    */
   private static final Map<Class<?>, Schema<?>> CACHED_SCHEMA = new ConcurrentHashMap<>();
 
+  @SuppressWarnings("unchecked")
   private static <T> Schema<T> getSchema(Class<T> cls) {
-    Schema<T> schema = (Schema<T>) CACHED_SCHEMA.get(cls);
-    if (Objects.isNull(schema) && Objects.isNull(RuntimeSchema.createFrom(cls))) {
-      schema = RuntimeSchema.createFrom(cls);
-      if (Objects.isNull(schema)) {
-        CACHED_SCHEMA.put(cls, schema);
-      }
-    }
-    return schema;
+    return (Schema<T>) CACHED_SCHEMA.computeIfAbsent(cls, RuntimeSchema::createFrom);
   }
 
   @Override
