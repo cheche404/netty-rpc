@@ -11,7 +11,7 @@
 
   <artifactId>netty-rpc-one</artifactId>
   <packaging>pom</packaging>
-  <description> 基于 netty 、spring 实现 rpc </description>
+  <description> 基于 netty、spring 实现 rpc </description>
   <modules>
     <module>rpc-server</module>
     <module>rpc-protocol</module>
