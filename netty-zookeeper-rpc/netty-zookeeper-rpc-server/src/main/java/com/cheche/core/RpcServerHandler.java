@@ -87,7 +87,7 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcRequest> {
     // Cglib reflect
     FastClass serviceFastClass = FastClass.create(serviceClass);
 //    FastMethod fastMethod = serviceFastClass.getMethod(methodName, parameterTypes);
-//    return fastMethod.invoke(serviceClass, parameters);
+//    return fastMethod.invoke(serviceBean, parameters);
     // cglib higher-performance 效率最高
     int index = serviceFastClass.getIndex(methodName, parameterTypes);
     return serviceFastClass.invoke(index, serviceBean, parameters);

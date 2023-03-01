@@ -17,16 +17,22 @@ import java.util.Objects;
 public class RpcProtocol implements Serializable {
 
   private static final long serialVersionUID = -1102180003395190700L;
-  // service host
+
+  /**
+   * service host
+   */
   private String host;
-  // service port
+  /**
+   * service port
+   */
   private int port;
-  // service info list
+  /**
+   * service info list
+   */
   private List<RpcServiceInfo> serviceInfoList;
 
   public String toJson() {
-    String json = JsonUtil.objectToJson(this);
-    return json;
+    return JsonUtil.objectToJson(this);
   }
 
   public static RpcProtocol fromJson(String json) {

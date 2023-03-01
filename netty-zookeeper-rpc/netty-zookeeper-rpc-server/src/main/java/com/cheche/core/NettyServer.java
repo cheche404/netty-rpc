@@ -107,7 +107,6 @@ public class NettyServer extends Server {
       }
     });
     thread.start();
-    thread.start();
   }
 
   @Override
