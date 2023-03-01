@@ -19,11 +19,12 @@ public class HessianSerializer implements ISerializer {
 
   @Override
   public <T> byte[] serializer(T obj) {
-    Hessian2Output output = null;
+    Hessian2Output output;
     byte[] result = null;
     try {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       output = new Hessian2Output(bos);
+      output.writeObject(obj);
       output.flush();
       result = bos.toByteArray();
     } catch (IOException e) {
